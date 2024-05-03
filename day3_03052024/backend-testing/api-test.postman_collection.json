@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "ece426e1-8bcf-4707-8bfa-26803983dbf7",
+		"name": "api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28318159"
+	},
+	"item": [
+		{
+			"name": "get merchant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"id User คนแรก\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"ชื่อ User คนแรก\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"name11\");",
+							"});",
+							"",
+							"pm.test(\"email User คนแรก\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].email).to.eql(\"name1@email.com\");",
+							"});",
+							"",
+							"pm.test(\"id User คนสอง\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].id).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"ชื่อ User คนสอง\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].name).to.eql(\"name22\");",
+							"});",
+							"",
+							"pm.test(\"email User คนสอง\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].email).to.eql(\"name2@email.com\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "backend:3000",
+					"protocol": "http",
+					"host": [
+						"backend"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		}
+	]
+}
