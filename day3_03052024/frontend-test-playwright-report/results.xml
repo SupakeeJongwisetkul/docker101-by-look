@@ -1,8 +1,0 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="2.7210739999999998">
-<testsuite name="demo.spec.ts" timestamp="2024-05-03T10:22:47.252Z" hostname="chromium" tests="2" failures="0" skipped="0" time="2.098" errors="0">
-<testcase name="has title" classname="demo.spec.ts" time="0.987">
-</testcase>
-<testcase name="has Add new merchant button" classname="demo.spec.ts" time="1.111">
-</testcase>
-</testsuite>
-</testsuites>
