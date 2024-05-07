@@ -1,4 +1,3 @@
-version: '3'
 services:
   web:
     image: kop22778/demo:3.0
@@ -78,14 +77,14 @@ services:
         condition: service_healthy
 
   mock_api:
-    image: mock-api:latest
+    image: mock-api:1.0
     container_name: mock-api
     build:
       context: ./mountebank
       dockerfile: ./Dockerfile
-    volumes:
-      - ./mountebank/imposters:/imposters
     ports:
       - 2525:2525
       - 8090:8090
     command: --configfile /imposters/imposters.ejs --allowInjection
+    volumes:
+      - ./mountebank/imposters:/imposters
