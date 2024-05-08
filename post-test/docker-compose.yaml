@@ -1,0 +1,119 @@
+services:
+  db_01:
+    image: postgres:16.0
+    container_name: postgres1
+    build:
+      context: ./database1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres/pet-table.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./postgres/pet-data.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./postgres/merchant-table.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./postgres/merchant-data.sql:/docker-entrypoint-initdb.d/4.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s  
+
+
+  db_02:
+    image: postgres:16.0
+    container_name: postgres2
+    build:
+      context: ./database2
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s  
+    
+
+  backend1:
+    image: backend1:1.0
+    container_name: backend1
+    build:
+      context: ./backend1
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      DB1_HOST: db_1
+      DB1_NAME: postgres
+      DB1_USER: postgres
+      DB1_PASSWORD: postgres
+      DB2_HOST: db_2
+      DB2_NAME: postgres
+      DB2_USER: postgres
+      DB2_PASSWORD: postgres
+      env: THIRD_PARTY_SERVICE
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    depends_on:
+      db_01:
+        condition: service_healthy
+
+  backend2:
+    image: backend2:1.0
+    container_name: backend2
+    build:
+      context: ./backend2
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    environment:
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      DB1_HOST: db_1
+      DB1_NAME: postgres
+      DB1_USER: postgres
+      DB1_PASSWORD: postgres
+      DB2_HOST: db_2
+      DB2_NAME: postgres
+      DB2_USER: postgres
+      DB2_PASSWORD: postgres
+      env: THIRD_PARTY_SERVICE
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8888 || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    depends_on:
+      db_01:
+        condition: service_healthy
+
+  backend_test:
+    build: ./backend-testing
+    container_name: backend-test
+    volumes:
+      - ./backend-testing/reports:/etc/newman/reports
+    
+
+
+  mock_api:
+    image: mock-api:1.0
+    container_name: mock-api
+    build:
+      context: ./mountebank
+      dockerfile: ./Dockerfile
+    ports:
+      - 2525:2525
+      - 8090:8090
+    command: --configfile /imposters/imposters.ejs --allowInjection
+    volumes:
+      - ./mountebank/imposters:/imposters
