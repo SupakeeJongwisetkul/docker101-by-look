@@ -1,6 +1,6 @@
 services:
   db_01:
-    image: postgres:16.0
+    image: postgres1:16.0
     container_name: postgres1
     build:
       context: ./database1
@@ -9,10 +9,10 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     volumes:
-      - ./postgres/pet-table.sql:/docker-entrypoint-initdb.d/1.sql
-      - ./postgres/pet-data.sql:/docker-entrypoint-initdb.d/2.sql
-      - ./postgres/merchant-table.sql:/docker-entrypoint-initdb.d/3.sql
-      - ./postgres/merchant-data.sql:/docker-entrypoint-initdb.d/4.sql
+      - ./database1/merchant-table.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./database1/pet-table.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./database1/merchant-data.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./database1/pet-data.sql:/docker-entrypoint-initdb.d/4.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "postgres"]
       interval: 5s
@@ -22,15 +22,19 @@ services:
 
 
   db_02:
-    image: postgres:16.0
+    image: postgres2:16.0
     container_name: postgres2
     build:
       context: ./database2
-      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    volumes:
+      - ./database2/food-table.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./database2/user-table.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./database2/food-data.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./database2/user-data.sql:/docker-entrypoint-initdb.d/4.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "postgres"]
       interval: 5s
@@ -49,11 +53,11 @@ services:
       - "3000:3000"
     environment:
       NODE_TLS_REJECT_UNAUTHORIZED: 0
-      DB1_HOST: db_1
+      DB1_HOST: db_01
       DB1_NAME: postgres
       DB1_USER: postgres
       DB1_PASSWORD: postgres
-      DB2_HOST: db_2
+      DB2_HOST: db_02
       DB2_NAME: postgres
       DB2_USER: postgres
       DB2_PASSWORD: postgres
@@ -67,6 +71,8 @@ services:
     depends_on:
       db_01:
         condition: service_healthy
+      db_02:
+        condition: service_healthy
 
   backend2:
     image: backend2:1.0
@@ -75,26 +81,28 @@ services:
       context: ./backend2
       dockerfile: Dockerfile
     ports:
-      - "8888:8888"
+      - "3001:3001"
     environment:
       NODE_TLS_REJECT_UNAUTHORIZED: 0
-      DB1_HOST: db_1
+      DB1_HOST: db_01
       DB1_NAME: postgres
       DB1_USER: postgres
       DB1_PASSWORD: postgres
-      DB2_HOST: db_2
+      DB2_HOST: db_02
       DB2_NAME: postgres
       DB2_USER: postgres
       DB2_PASSWORD: postgres
       env: THIRD_PARTY_SERVICE
     healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:8888 || exit 1
+      test: wget --no-verbose --tries=1 --spider http://localhost:3001 || exit 1
       interval: 5s
       timeout: 5s
       retries: 5
       start_period: 5s
     depends_on:
       db_01:
+        condition: service_healthy
+      db_02:
         condition: service_healthy
 
   backend_test:

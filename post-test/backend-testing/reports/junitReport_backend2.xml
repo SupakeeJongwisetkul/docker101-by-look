@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Backend2" tests="2" time="0.000">
+  <testsuite name="Get pet" id="aaff94d2-274e-4794-b200-338c61ca8328" timestamp="2024-05-09T06:44:42.642Z" tests="5" failures="5" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND backend2
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="expected undefined to equal 200">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get pet.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected undefined to equal 200.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to equal 200
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response has the required fields - id, name, and total" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get pet.]]>
+        <![CDATA[Test description: Response has the required fields - id, name, and total.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:2:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Name is a non-empty string" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get pet.]]>
+        <![CDATA[Test description: Name is a non-empty string.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:3:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Total is a non-negative integer" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get pet.]]>
+        <![CDATA[Test description: Total is a non-negative integer.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:4:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Content-Type header is application/json" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get pet.]]>
+        <![CDATA[Test description: Content-Type header is application/json.]]>
+        <![CDATA[Error message: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string.]]>
+        <![CDATA[Stacktrace: AssertionError: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+   at Object.eval sandbox-script.js:5:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Get food" id="a3e11982-e621-4c25-8207-1b2c42ea470f" timestamp="2024-05-09T06:44:42.642Z" tests="5" failures="5" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND backend2
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="expected undefined to equal 200">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get food.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected undefined to equal 200.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to equal 200
+   at Object.eval sandbox-script.js:1:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response has the required fields - id, name, and total" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get food.]]>
+        <![CDATA[Test description: Response has the required fields - id, name, and total.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:2:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Name is a non-empty string" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get food.]]>
+        <![CDATA[Test description: Name is a non-empty string.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:3:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Total is a non-negative integer" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get food.]]>
+        <![CDATA[Test description: Total is a non-negative integer.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:4:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Content-Type header is application/json" time="0.000" classname="Backend2">
+      <failure type="AssertionFailure" message="the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 6f5c3978-de15-4b30-afb4-d7fb37ccd794.]]>
+        <![CDATA[Collection name: Backend2.]]>
+        <![CDATA[Request name: Get food.]]>
+        <![CDATA[Test description: Content-Type header is application/json.]]>
+        <![CDATA[Error message: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string.]]>
+        <![CDATA[Stacktrace: AssertionError: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+   at Object.eval sandbox-script.js:5:2).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>

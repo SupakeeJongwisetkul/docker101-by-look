@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Third party" tests="1" time="0.000">
+  <testsuite name="3rd party" id="86459a5a-6b40-4a5c-b639-10d5e776d518" timestamp="2024-05-09T06:44:43.599Z" tests="2" failures="2" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND backend1
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+
+---
+]]></system-err>
+    <testcase name="Status code is 200" time="0.000" classname="ThirdParty">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: adc26602-8267-44cd-b2b1-5ff58ff00580.]]>
+        <![CDATA[Collection name: Third party.]]>
+        <![CDATA[Request name: 3rd party.]]>
+        <![CDATA[Test description: Status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Schema is valid" time="0.000" classname="ThirdParty">
+      <failure type="AssertionFailure" message="&quot;undefined&quot; is not valid JSON">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: adc26602-8267-44cd-b2b1-5ff58ff00580.]]>
+        <![CDATA[Collection name: Third party.]]>
+        <![CDATA[Request name: 3rd party.]]>
+        <![CDATA[Test description: Schema is valid.]]>
+        <![CDATA[Error message: "undefined" is not valid JSON.]]>
+        <![CDATA[Stacktrace: JSONError: "undefined" is not valid JSON
+   at Object.eval sandbox-script.js:2:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
